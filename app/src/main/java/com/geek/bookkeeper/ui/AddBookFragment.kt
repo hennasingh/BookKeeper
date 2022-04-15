@@ -45,17 +45,27 @@ class AddBookFragment : Fragment() {
             val book = Book(name = "Ikigai", isRead = false, _partition = user!!.id)
             book.authors.add(authorOne)
             book.authors.add(authorTwo)
+
+            val authorThree = Author("J.K Rowling", "United Kingdom", "jkrowling@gmail.com")
+            val bookTwo = Book(name ="Harry Potter and the Chamber of secrets", isRead = false, _partition = user!!.id)
+            bookTwo.authors.add(authorThree)
+
+            /**
+             * Adding Two books in One Transaction,
+             * best practice or Not?
+             */
             realmClass.executeTransactionAsync({ realm ->
                 realm.insert(book)
+                realm.insert(bookTwo)
             }, {
-                Timber.d("Book Object Added Successfuly")
+                Timber.d("Book Objects Added Successfuly")
                 Toast.makeText(
                     requireContext(),
-                    "Book Object added successfully",
+                    "Book Objects added successfully",
                     Toast.LENGTH_LONG
                 ).show()
             }, { throwError ->
-                Timber.d("Error adding the bookObject to Database %s", throwError.localizedMessage)
+                Timber.d("Error adding the bookObjects to Database %s", throwError.localizedMessage)
 
                 Toast.makeText(
                     requireContext(),
