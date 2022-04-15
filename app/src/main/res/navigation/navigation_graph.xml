@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/bookListFragment">
+
+    <fragment
+        android:id="@+id/bookListFragment"
+        android:name="com.geek.bookkeeper.ui.BookListFragment"
+        android:label="Book List"
+        tools:layout="@layout/fragment_book_list" />
+    <fragment
+        android:id="@+id/addBookFragment"
+        android:name="com.geek.bookkeeper.ui.AddBookFragment"
+        android:label="Add Book Details"
+        tools:layout="@layout/fragment_add_book" />
+</navigation>
